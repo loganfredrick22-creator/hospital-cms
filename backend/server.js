@@ -18,7 +18,17 @@ import dashboardRoutes from './src/routes/dashboardRoutes.js';
 
 const app = express();
 
-app.use(cors({ origin: config.frontendUrl, credentials: true }));
+const allowedOrigins = [config.frontendUrl, 'https://hospital-cms-omega.vercel.app'];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(null, true);
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 
