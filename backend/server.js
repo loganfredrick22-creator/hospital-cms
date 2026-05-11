@@ -39,8 +39,9 @@ app.use('/api/dashboard', dashboardRoutes);
 
 app.use(errorHandler);
 
-connectDB().then(() => {
-  app.listen(config.port, () => {
-    console.log(`Server running on port ${config.port} in ${config.nodeEnv} mode`);
+app.listen(config.port, () => {
+  console.log(`Server running on port ${config.port} in ${config.nodeEnv} mode`);
+  connectDB().catch((err) => {
+    console.error('Failed to connect to database. Server running without DB:', err.message);
   });
 });
