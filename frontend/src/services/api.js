@@ -3,7 +3,7 @@ import { useAuthStore } from '@/store/authStore';
 
 const getBaseURL = () => {
   if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return 'https://hospital-cms-apipi.onrender.com';
+    return 'https://hospital-cms-apipi.onrender.com/api';
   }
   return '/api';
 };
