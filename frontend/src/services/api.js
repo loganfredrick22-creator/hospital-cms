@@ -1,8 +1,15 @@
 import axios from 'axios';
 import { useAuthStore } from '@/store/authStore';
 
+const getBaseURL = () => {
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return 'https://hospital-cms-apipi.onrender.com';
+  }
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: getBaseURL(),
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -25,7 +32,7 @@ api.interceptors.response.use(
 
       if (refreshToken) {
         try {
-          const { data } = await axios.post(`${import.meta.env.VITE_API_URL || '/api'}/auth/refresh`, { refreshToken });
+          const { data } = await axios.post(`${getBaseURL()}/auth/refresh`, { refreshToken });
           useAuthStore.getState().setTokens(data.data);
           originalRequest.headers.Authorization = `Bearer ${data.data.accessToken}`;
           return api(originalRequest);
