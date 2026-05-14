@@ -87,7 +87,7 @@ export default function DoctorsPage() {
     { key: 'department', label: 'Department', render: (r) => r.department?.name || 'N/A' },
     { key: 'specialization', label: 'Specialization' },
     { key: 'qualification', label: 'Qualification' },
-    { key: 'consultationFee', label: 'Fee', render: (r) => `$${r.consultationFee}` },
+    { key: 'consultationFee', label: 'Fee (KES)', render: (r) => `KES ${r.consultationFee?.toLocaleString()}` },
     {
       key: 'status',
       label: 'Status',
@@ -176,7 +176,7 @@ export default function DoctorsPage() {
                 <Input type="number" value={form.experience} onChange={(e) => setForm({ ...form, experience: parseInt(e.target.value) || 0 })} />
               </div>
               <div className="space-y-2">
-                <Label>Consultation Fee ($)</Label>
+                <Label>Consultation Fee (KES)</Label>
                 <Input type="number" value={form.consultationFee} onChange={(e) => setForm({ ...form, consultationFee: parseInt(e.target.value) || 0 })} />
               </div>
               <div className="space-y-2">
@@ -219,7 +219,7 @@ export default function DoctorsPage() {
                 <div><span className="font-medium">Department:</span> {viewDoctor.department?.name}</div>
                 <div><span className="font-medium">Specialization:</span> {viewDoctor.specialization}</div>
                 <div><span className="font-medium">Experience:</span> {viewDoctor.experience} years</div>
-                <div><span className="font-medium">Fee:</span> ${viewDoctor.consultationFee}</div>
+                <div><span className="font-medium">Fee:</span> KES {viewDoctor.consultationFee?.toLocaleString()}</div>
                 <div><span className="font-medium">License:</span> {viewDoctor.licenseNumber || 'N/A'}</div>
               </div>
               <div className="text-sm"><span className="font-medium">Hours:</span> {viewDoctor.availableTimeSlots?.start} - {viewDoctor.availableTimeSlots?.end}</div>

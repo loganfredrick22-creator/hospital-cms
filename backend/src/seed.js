@@ -44,23 +44,23 @@ const seed = async () => {
       email: 'admin@hospital.com',
       password: 'Admin@123',
       role: 'admin',
-      phone: '+1-555-0100',
+      phone: '+254-712-100-000',
     });
     console.log(`Created admin: admin@hospital.com / Admin@123`);
 
     // Create doctor users
     const doctorUsers = await User.insertMany([
-      { name: 'Dr. Sarah Johnson', email: 'sarah@hospital.com', password: 'Doctor@123', role: 'doctor', phone: '+1-555-0101' },
-      { name: 'Dr. Michael Chen', email: 'michael@hospital.com', password: 'Doctor@123', role: 'doctor', phone: '+1-555-0102' },
-      { name: 'Dr. Emily Rodriguez', email: 'emily@hospital.com', password: 'Doctor@123', role: 'doctor', phone: '+1-555-0103' },
+      { name: 'Dr. James Kamau', email: 'jkamau@hospital.com', password: 'Doctor@123', role: 'doctor', phone: '+254-712-100-101' },
+      { name: 'Dr. Grace Wanjiku', email: 'gwanjiku@hospital.com', password: 'Doctor@123', role: 'doctor', phone: '+254-712-100-102' },
+      { name: 'Dr. Peter Ochieng', email: 'pochieng@hospital.com', password: 'Doctor@123', role: 'doctor', phone: '+254-712-100-103' },
     ]);
     console.log(`Created ${doctorUsers.length} doctors`);
 
     // Create doctor profiles
     await Doctor.insertMany([
-      { user: doctorUsers[0]._id, department: departments[0]._id, specialization: 'Interventional Cardiology', qualification: 'MD, FACC', experience: 15, consultationFee: 250 },
-      { user: doctorUsers[1]._id, department: departments[1]._id, specialization: 'Neurological Surgery', qualification: 'MD, FAANS', experience: 12, consultationFee: 300 },
-      { user: doctorUsers[2]._id, department: departments[2]._id, specialization: 'General Pediatrics', qualification: 'MD, FAAP', experience: 8, consultationFee: 180 },
+      { user: doctorUsers[0]._id, department: departments[0]._id, specialization: 'Interventional Cardiology', qualification: 'MBChB, MMed (Cardiology)', experience: 15, consultationFee: 3000 },
+      { user: doctorUsers[1]._id, department: departments[1]._id, specialization: 'Neurological Surgery', qualification: 'MBChB, MMed (Neurosurgery)', experience: 12, consultationFee: 5000 },
+      { user: doctorUsers[2]._id, department: departments[2]._id, specialization: 'General Pediatrics', qualification: 'MBChB, MMed (Pediatrics)', experience: 8, consultationFee: 2500 },
     ]);
     console.log(`Created doctor profiles`);
 
@@ -70,25 +70,25 @@ const seed = async () => {
       email: 'reception@hospital.com',
       password: 'Reception@123',
       role: 'receptionist',
-      phone: '+1-555-0199',
+      phone: '+254-712-100-199',
     });
     console.log(`Created receptionist: reception@hospital.com / Reception@123`);
 
     // Create sample patient
     const patientUser = await User.create({
-      name: 'John Doe',
-      email: 'john@example.com',
+      name: 'John Kiprop',
+      email: 'jkiprop@example.com',
       password: 'Patient@123',
       role: 'patient',
-      phone: '+1-555-0200',
+      phone: '+254-712-100-200',
     });
     await Patient.create({
       user: patientUser._id,
       dateOfBirth: new Date('1985-06-15'),
       gender: 'male',
       bloodGroup: 'O+',
-      address: '123 Main St, New York, NY 10001',
-      emergencyContact: { name: 'Jane Doe', phone: '+1-555-0299', relationship: 'Spouse' },
+      address: '45 Kimathi Street, Nairobi CBD, 00100',
+      emergencyContact: { name: 'Jane Wanjiku', phone: '+254-712-100-299', relationship: 'Spouse' },
     });
     console.log(`Created patient: john@example.com / Patient@123`);
 
