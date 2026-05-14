@@ -94,9 +94,9 @@ const seed = async () => {
 
     console.log('\n=== SEED COMPLETE ===');
     console.log('Admin:         admin@hospital.com / Admin@123');
-    console.log('Doctor:        sarah@hospital.com / Doctor@123');
+    console.log('Doctor:        jkamau@hospital.com / Doctor@123');
     console.log('Receptionist:  reception@hospital.com / Reception@123');
-    console.log('Patient:       john@example.com / Patient@123');
+    console.log('Patient:       jkiprop@example.com / Patient@123');
 
     process.exit(0);
   } catch (error) {
